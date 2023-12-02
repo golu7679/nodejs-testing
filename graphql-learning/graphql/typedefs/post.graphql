@@ -1,0 +1,9 @@
+type comment {
+  _id: ID!
+  posts(query: string): [Posts!]!
+}
+
+type Posts {
+  _id: ID!
+  name: String
+}

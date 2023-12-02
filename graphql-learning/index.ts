@@ -6,6 +6,7 @@ import { Express, NextFunction, Response } from 'express';
 import * as cors from 'cors';
 import helmet from 'helmet';
 import * as morgan from 'morgan'
+import yoga from './graphql/base';
 
 const app: Express = express();
 const PORT = +process.env.PORT || 3000;
@@ -48,9 +49,8 @@ app.set('view engine', 'ejs');
 
 app.disable('x-powered-by');
 
-// database operation logs
-// mongoose.set('debug', true);
-
+// adding yoga middleware in express
+app.use(yoga.graphqlEndpoint, yoga)
 
 // Server Listing At
 app.listen(PORT, async () => {
